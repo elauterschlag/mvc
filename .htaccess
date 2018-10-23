@@ -1,0 +1,9 @@
+RewriteEngine On
+
+# Alle Aufrufe, egal ob Verzeichnis oder Datei, werden an die indes.php im App-Root geschickt.
+# Auﬂer es handelt sich um die in der dritten Bedingung genannten Verzeichnisse oder die robots.txt. 
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond $1 !^(config|core|css|js|fonts|robots\.txt)
+
+RewriteRule ^(.+)$ index.php/$1 [L]
